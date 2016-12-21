@@ -166,6 +166,8 @@ app.post('/webhook', function (req, res) {
                       var start = meetings.start.dateTime || meetings.start.date;
                       // var data = [start, events.summary];
                       list = meetings.summary;
+                      return sendMessage(event.sender.id, {text: meetings.summary});
+
                       console.log('%s - %s', start, meetings.summary);
                     }
                     // return events;
@@ -174,8 +176,7 @@ app.post('/webhook', function (req, res) {
                 sendMessage(event.sender.id, {text: meetings.summary});
                 // return data;
               }
-              listEvents(auth);
-              sendMessage(event.sender.id, {text: list});
+              // sendMessage(event.sender.id, {text: list});
 
             }
             else{
