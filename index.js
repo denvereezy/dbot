@@ -158,10 +158,10 @@ app.post('/webhook', function (req, res) {
                   } else {
                     console.log('Upcoming events:');
                     for (var i = 0; i < events.length; i++) {
-                      var event = events[i];
-                      var start = event.start.dateTime || event.start.date;
-                      console.log('%s - %s', start, event.summary);
-                      sendMessage(event.sender.id, {text: 'bla' + [start, event.summary]});
+                      var events = events[i];
+                      var start = events.start.dateTime || events.start.date;
+                      sendMessage(event.sender.id, {text: 'bla ' + events.summary});
+                      console.log('%s - %s', start, events.summary);
                     }
                   }
                 });
