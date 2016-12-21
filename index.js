@@ -163,7 +163,7 @@ app.post('/webhook', function (req, res) {
                     for (var i = 0; i < events.length; i++) {
                       var events = events[i];
                       var start = events.start.dateTime || events.start.date;
-                      var data = start, events.summary;
+                      var data = [start, events.summary];
                       console.log('%s - %s', start, events.summary);
                     }
                   }
