@@ -161,7 +161,7 @@ app.post('/webhook', function (req, res) {
                       var event = events[i];
                       var start = event.start.dateTime || event.start.date;
                       console.log('%s - %s', start, event.summary);
-                      sendMessage(event.sender.id, {text: [start, event.summary]});
+                      sendMessage(event.sender.id, {text: 'bla' + [start, event.summary]});
                     }
                   }
                 });
