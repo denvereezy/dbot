@@ -40,7 +40,7 @@ app.post('/webhook', function (req, res) {
             else if (event.message.text === 'Turn on lights') {
               sendMessage(event.sender.id,{text:"Turning on lights"});
             }
-            else if(events.message.text === 'What does my week look like'){
+            else if (event.message.text === 'What does my week look like'){
               var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
               var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
                   process.env.USERPROFILE) + '/.credentials/';
@@ -158,7 +158,7 @@ app.post('/webhook', function (req, res) {
                     for (var i = 0; i < events.length; i++) {
                       var event = events[i];
                       var start = event.start.dateTime || event.start.date;
-                      sendMessage(event.sender.id,{text: event.summary});
+                      sendMessage(event.sender.id,{text: [start, event.summary]});
 
                       console.log('%s - %s', start, event.summary);
                     }
