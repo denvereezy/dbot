@@ -168,9 +168,9 @@ app.post('/webhook', function (req, res) {
                     }
                   }
                 });
-                return data;
+                sendMessage(event.sender.id, {text: data});
+                // return data;
               }
-              sendMessage(event.sender.id, {text: data});
             }
             else{
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
