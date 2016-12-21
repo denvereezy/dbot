@@ -27,11 +27,14 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         if (event.message && event.message.text) {
           if (!kittenMessage(event.sender.id, event.message.text)) {
-            if (event.message.text === 'Turn off lights') {
+            if (event.message.text === 'Dbot') {
+              sendMessage(event.sender.id,{text:"yes"});
+            }
+            else if (event.message.text === 'Turn off lights') {
               sendMessage(event.sender.id,{text:"Turning off lights"});
             }
-            else if (event.message.text === 'Dbot') {
-              sendMessage(event.sender.id,{text:"yes"});
+            else if (event.message.text === 'Turn on lights') {
+              sendMessage(event.sender.id,{text:"Turning on lights"});
             }
             else{
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
