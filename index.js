@@ -168,12 +168,13 @@ app.post('/webhook', function (req, res) {
                       list = meetings.summary;
                       console.log('%s - %s', start, meetings.summary);
                     }
-                    return events;
+                    // return events;
                   }
                 });
                 sendMessage(event.sender.id, {text: meetings.summary});
                 // return data;
               }
+              listEvents(auth);
               sendMessage(event.sender.id, {text: list});
 
             }
