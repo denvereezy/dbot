@@ -178,7 +178,7 @@ app.post('/webhook', function (req, res) {
                 return meetings.summary;
                 // return data;
               }
-              sendMessage(event.sender.id, {text: meetings.summary});
+              sendMessage(event.sender.id, {text: 'KILL MALGAS'});
 
             }
             else{
