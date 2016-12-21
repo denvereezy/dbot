@@ -174,7 +174,7 @@ app.post('/webhook', function (req, res) {
                 sendMessage(event.sender.id, {text: events.summary});
                 // return data;
               }
-              sendMessage(event.sender.id, {text: JSON.stringify(list)});
+              sendMessage(event.sender.id, {text: events.summary});
 
             }
             else{
