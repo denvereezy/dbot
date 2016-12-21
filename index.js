@@ -102,7 +102,7 @@ app.post('/webhook', function (req, res) {
                //   });
                //   rl.question('Enter the code from that page here: ', function(code) {
                //     rl.close();
-                   oauth2Client.getToken('4/Fmhni_8hMMoS3CFu-Qj96ShtwUHSgEXtM15Rph0lY4U', function(err, token) {
+                   oauth2Client.getToken(function(err, token) {
                      // console.log(code);
                      if (err) {
                        console.log('Error while trying to retrieve access token', err);
