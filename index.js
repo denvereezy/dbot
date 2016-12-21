@@ -175,7 +175,7 @@ app.post('/webhook', function (req, res) {
 
                   // }
                 });
-                sendMessage(event.sender.id, {text: meetings.summary});
+                return sendMessage(event.sender.id, {text: meetings.summary});
                 // return data;
               }
               // sendMessage(event.sender.id, {text: meetings.summary});
