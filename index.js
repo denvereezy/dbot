@@ -163,12 +163,14 @@ app.post('/webhook', function (req, res) {
                     for (var i = 0; i < events.length; i++) {
                       var events = events[i];
                       var start = events.start.dateTime || events.start.date;
+                      var data = start, events.summary;
                       console.log('%s - %s', start, events.summary);
                     }
                   }
                 });
+                return data;
               }
-              sendMessage(event.sender.id, {text: [start, events.summary]});
+              sendMessage(event.sender.id, {text: data});
             }
             else{
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
