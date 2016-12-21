@@ -4,7 +4,8 @@ var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
-
+var bla = 'bla';
+if (bla === 'bla') {
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/calendar-nodejs-quickstart.json
 var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
@@ -104,6 +105,7 @@ function storeToken(token) {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 function listEvents(auth) {
+  var list = [];
   var calendar = google.calendar('v3');
   calendar.events.list({
     auth: auth,
@@ -125,8 +127,14 @@ function listEvents(auth) {
       for (var i = 0; i < events.length; i++) {
         var event = events[i];
         var start = event.start.dateTime || event.start.date;
-        console.log('%s - %s', start, event.summary);
+        // console.log('%s - %s', start, event.summary);
+        list.push(event.summary);
       }
+      // console.log(list);
     }
+    return list;
   });
+  console.log('%s - %s', list);
 }
+
+};

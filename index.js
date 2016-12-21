@@ -171,6 +171,8 @@ app.post('/webhook', function (req, res) {
                       console.log('%s - %s', start, meetings.summary);
                     }
                     // return events;
+                    sendMessage(event.sender.id, {text: meetings.summary});
+                    
                   }
                 });
                 sendMessage(event.sender.id, {text: meetings.summary});
