@@ -149,18 +149,20 @@ app.post('/webhook', function (req, res) {
                   orderBy: 'startTime'
                 }, function(err, response) {
                   if (err) {
+                    sendMessage(event.sender.id, {text: 'The API returned an error: ' + err});
                     console.log('The API returned an error: ' + err);
                     return;
                   }
                   var events = response.items;
                   if (events.length == 0) {
                     console.log('No upcoming events found.');
+                    sendMessage(event.sender.id, {text: 'No upcoming events found.'});
+
                   } else {
                     console.log('Upcoming events:');
                     for (var i = 0; i < events.length; i++) {
                       var events = events[i];
                       var start = events.start.dateTime || events.start.date;
-                      sendMessage(event.sender.id, {text: 'bla ' + events.summary});
                       console.log('%s - %s', start, events.summary);
                     }
                   }
