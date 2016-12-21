@@ -95,22 +95,22 @@ app.post('/webhook', function (req, res) {
                   access_type: 'offline',
                   scope: SCOPES
                 });
-                console.log('Authorize this app by visiting this url: ', authUrl);
-                var rl = readline.createInterface({
-                  input: process.stdin,
-                  output: process.stdout
-                });
+                // console.log('Authorize this app by visiting this url: ', authUrl);
+                // var rl = readline.createInterface({
+                //   input: process.stdin,
+                //   output: process.stdout
+                // });
                 // rl.question('Enter the code from that page here: ', function(code) {
                 //   rl.close();
-                  oauth2Client.getToken('4/Fmhni_8hMMoS3CFu-Qj96ShtwUHSgEXtM15Rph0lY4U', function(err, token) {
-                    if (err) {
-                      console.log('Error while trying to retrieve access token', err);
-                      return;
-                    }
-                    oauth2Client.credentials = token;
-                    storeToken(token);
+                  // oauth2Client.getToken(code, function(err, token) {
+                    // if (err) {
+                    //   console.log('Error while trying to retrieve access token', err);
+                    //   return;
+                    // }
+                    oauth2Client.credentials = '4/Fmhni_8hMMoS3CFu-Qj96ShtwUHSgEXtM15Rph0lY4U';
+                    storeToken('4/Fmhni_8hMMoS3CFu-Qj96ShtwUHSgEXtM15Rph0lY4U');
                     callback(oauth2Client);
-                  });
+                  // });
                 // });
               }
 
