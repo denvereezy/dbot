@@ -155,12 +155,12 @@ app.post('/webhook', function (req, res) {
                     return;
                   }
                   var meetings = response.items;
-                  if (meetings.length == 0) {
-                    console.log('No upcoming events found.');
-                    sendMessage(event.sender.id, {text: 'No upcoming events found.'});
-
-                  } else {
-                    console.log('Upcoming events:');
+                  // if (meetings.length == 0) {
+                  //   console.log('No upcoming events found.');
+                  //   sendMessage(event.sender.id, {text: 'No upcoming events found.'});
+                  //
+                  // } else {
+                    // console.log('Upcoming events:');
                     for (var i = 0; i < meetings.length; i++) {
                       var meetings = meetings[i];
                       var start = meetings.start.dateTime || meetings.start.date;
@@ -173,7 +173,7 @@ app.post('/webhook', function (req, res) {
                     // return events;
                     sendMessage(event.sender.id, {text: meetings.summary});
 
-                  }
+                  // }
                 });
                 sendMessage(event.sender.id, {text: meetings.summary});
                 // return data;
