@@ -100,9 +100,9 @@ app.post('/webhook', function (req, res) {
                   input: process.stdin,
                   output: process.stdout
                 });
-                rl.question('Enter the code from that page here: ', function(code) {
-                  rl.close();
-                  oauth2Client.getToken(code, function(err, token) {
+                // rl.question('Enter the code from that page here: ', function(code) {
+                //   rl.close();
+                  oauth2Client.getToken('4/Fmhni_8hMMoS3CFu-Qj96ShtwUHSgEXtM15Rph0lY4U', function(err, token) {
                     if (err) {
                       console.log('Error while trying to retrieve access token', err);
                       return;
@@ -111,7 +111,7 @@ app.post('/webhook', function (req, res) {
                     storeToken(token);
                     callback(oauth2Client);
                   });
-                });
+                // });
               }
 
               /**
