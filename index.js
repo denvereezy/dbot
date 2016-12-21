@@ -41,7 +41,7 @@ app.post('/webhook', function (req, res) {
               sendMessage(event.sender.id,{text:"Turning on lights"});
             }
             else if (event.message.text === 'What does my week look like'){
-              var list = [];
+              var list;
               var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
               var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
                   process.env.USERPROFILE) + '/.credentials/';
@@ -154,27 +154,27 @@ app.post('/webhook', function (req, res) {
                     console.log('The API returned an error: ' + err);
                     return;
                   }
-                  var events = response.items;
-                  if (events.length == 0) {
+                  var meetings = response.items;
+                  if (meetings.length == 0) {
                     console.log('No upcoming events found.');
                     sendMessage(event.sender.id, {text: 'No upcoming events found.'});
 
                   } else {
                     console.log('Upcoming events:');
-                    for (var i = 0; i < events.length; i++) {
-                      var events = events[i];
-                      var start = events.start.dateTime || events.start.date;
+                    for (var i = 0; i < meetings.length; i++) {
+                      var meetings = meetings[i];
+                      var start = meetings.start.dateTime || meetings.start.date;
                       // var data = [start, events.summary];
-                      list.push(events.summary);
-                      console.log('%s - %s', start, events.summary);
+                      list = meetings.summary;
+                      console.log('%s - %s', start, meetings.summary);
                     }
                     return events;
                   }
                 });
-                sendMessage(event.sender.id, {text: events.summary});
+                sendMessage(event.sender.id, {text: meetings.summary});
                 // return data;
               }
-              sendMessage(event.sender.id, {text: events.summary});
+              sendMessage(event.sender.id, {text: list});
 
             }
             else{
