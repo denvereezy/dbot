@@ -165,7 +165,7 @@ app.post('/webhook', function (req, res) {
                       var events = events[i];
                       var start = events.start.dateTime || events.start.date;
                       // var data = [start, events.summary];
-                      list.push(start + events.summary);
+                      list.push(events.summary);
                       console.log('%s - %s', start, events.summary);
                     }
                   }
