@@ -120,6 +120,7 @@ app.post('/webhook', function (req, res) {
                * @param {Object} token The token to store to disk.
                */
               function storeToken(token) {
+                console.log(token);
                 try {
                   fs.mkdirSync(TOKEN_DIR);
                 } catch (err) {
