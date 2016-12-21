@@ -30,7 +30,7 @@ app.post('/webhook', function (req, res) {
             if (event.message.text === 'Turn off lights') {
               sendMessage(event.sender.id,{text:"Turning off lights"});
             }
-            else if (event.message.text === 'dbot') {
+            else if (event.message.text === 'Dbot') {
               sendMessage(event.sender.id,{text:"yes"});
             }
             else{
