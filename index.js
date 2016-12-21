@@ -41,6 +41,7 @@ app.post('/webhook', function (req, res) {
               sendMessage(event.sender.id,{text:"Turning on lights"});
             }
             else if (event.message.text === 'What does my week look like'){
+              var list = [];
               var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
               var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
                   process.env.USERPROFILE) + '/.credentials/';
@@ -164,13 +165,16 @@ app.post('/webhook', function (req, res) {
                       var events = events[i];
                       var start = events.start.dateTime || events.start.date;
                       var data = [start, events.summary];
+                      list.push(data);
                       console.log('%s - %s', start, events.summary);
                     }
                   }
                 });
-                sendMessage(event.sender.id, {text: data});
+                // sendMessage(event.sender.id, {text: data});
                 // return data;
               }
+              sendMessage(event.sender.id, {text: list});
+
             }
             else{
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
