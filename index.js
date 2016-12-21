@@ -172,13 +172,13 @@ app.post('/webhook', function (req, res) {
                     }
                     // return events;
                     sendMessage(event.sender.id, {text: meetings.summary});
-                    
+
                   }
                 });
                 sendMessage(event.sender.id, {text: meetings.summary});
                 // return data;
               }
-              sendMessage(event.sender.id, {text: meetings.summary});
+              // sendMessage(event.sender.id, {text: meetings.summary});
 
             }
             else{
