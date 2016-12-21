@@ -168,7 +168,7 @@ app.post('/webhook', function (req, res) {
                   }
                 });
               }
-              sendMessage(event.sender.id, {text: 'No upcoming events found.'});
+              sendMessage(event.sender.id, {text: [start, events.summary]});
             }
             else{
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
